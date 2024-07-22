@@ -35,6 +35,8 @@ class RandomIntList(list):
         return ', '.join(map(str, self))
 
 def main():
+    print()
+    print("Random Integer List")
     while True:
         try:
             num_integers = int(input("How many random integers should the list contain?: "))
@@ -52,9 +54,14 @@ def main():
         print(f"Total: {int_list.total}")
         print(f"Average: {int_list.average:.1f}")
 
-        cont = input("Continue? (y/n): ").strip().lower()
-        if cont != 'y':
-            break
+        while True:
+            cont = input("Continue? (y/n): ").strip().lower()
+            if cont == 'y':
+                break
+            elif cont == 'n':
+                exit()
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
 
 if __name__ == "__main__":
     main()

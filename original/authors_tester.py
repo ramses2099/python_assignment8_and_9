@@ -1,8 +1,6 @@
-from AuthorObjectsNew import Book, Author, Authors
-import os
+from AuthorObjects import Book, Author, Authors
 
 def main():
-    print()
     print("The Authors Tester program")
     print()
     
@@ -18,14 +16,9 @@ def main():
     print(book)
     print()
 
-    print("BOOK DATA - MULTIPLE LINES")
+    print("BOOK DATA - MUTLIPLE LINES")
     print("Title:   ", book.title)
-    print("Author:  " if authors.count == 1 else "Authors: ", book.authors)
-    
-    print("\nAUTHORS")
-    for author in authors:
-        print(author)
-    
+    print("Authors: ",  book.authors)
         
 if __name__ == "__main__":
     main()
