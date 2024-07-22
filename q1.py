@@ -17,6 +17,7 @@ class Person:
     @property
     def full_name(self) -> str:
         return f"{self.first_name} {self.last_name}"
+    
 # Create a Customer class that inherits the Person class. This class should add an attribute for a  customer number.
 class Customer(Person):
     """
@@ -25,6 +26,7 @@ class Customer(Person):
     def __init__(self, first_name: str, last_name: str, email: str, customer_number: int) -> None:
         super().__init__(first_name, last_name, email)
         self.customer_number = customer_number
+        
 #Create an Employee class that inherits the Person class. This class should add an attribute for a social  security number (SSN).
 class Employee(Person):
     """
@@ -35,12 +37,14 @@ class Employee(Person):
         self.ssn = ssn
 
 def main():
+    print()
+    print("Customer/Employee Data Entry")
     while True:
         role = input("Customer or employee? (c/e): ").strip().lower()
         if role not in ['c', 'e']:
             print("Invalid input. Please enter 'c' for customer or 'e' for employee.")
             continue
-        
+        print()
         print("DATA ENTRY")
         first_name = input("First name: ").strip()
         last_name = input("Last name: ").strip()
@@ -49,12 +53,15 @@ def main():
         if role == 'c':
             customer_number = input("Number: ").strip()
             person = Customer(first_name, last_name, email, customer_number)
+            print()
             print("CUSTOMER")
         else:
             ssn = input("SSN: ").strip()
             person = Employee(first_name, last_name, email, ssn)
+            print()
             print("EMPLOYEE")
         
+
         print(f"Name: {person.full_name}")
         print(f"Email: {person.email}")
 
@@ -62,11 +69,16 @@ def main():
             print(f"Number: {person.customer_number}")
         else:
             print(f"SSN: {person.ssn}")
-
-        continue_entry = input("Continue? (y/n): ").strip().lower()
-        if continue_entry != 'y':
-            print("Bye!")
-            break
+        while True:
+            print()
+            continue_entry = input("Continue? (y/n): ").strip().lower()
+            if continue_entry == 'y':
+                break
+            elif continue_entry == 'n':
+                print("Bye!")
+                exit()
+            else:
+                print("Invalid input. Please enter 'y' or 'n'.")
 
 if __name__ == "__main__":
     main()

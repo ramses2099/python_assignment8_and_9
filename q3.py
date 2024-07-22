@@ -20,20 +20,7 @@ def show_products(products):
         print(f"{i}. {product.getDescription()}")
     print()
 
-# def show_product(product):
-#     w=18
-#     print("PRODUCT DATA")
-#     print(f"{'Name:':{w}}{product.name}")
-#     if isinstance(product, Book):
-#         print(f"{'Author:':{w}}{product.author}")
-#     if isinstance(product, Movie):
-#         print(f"{'Year:':{w}}{product.year}")
-#     if isinstance(product, Album):
-#         print(f"{'Author:':{w}}{product.artist}")
-#     if isinstance(product, (Book, Movie, Album)):
-#         print(f"{'Format:':{w}}{product.format}")
-#     print(f"{'Discount price:':{w}}{product.getDiscountPrice():.2f}")
-#     print()
+
 
 def show_product(product):
     w=18
@@ -52,7 +39,7 @@ def show_product(product):
 
 
 def main():
-    os.system("clear")
+    print()
     print("The Product Viewer program")
     print()
     
@@ -67,13 +54,25 @@ def main():
 
     choice = "y"
     while choice.lower() == "y":
-        number = int(input("Enter product number: "))
-        print()
+        try:
+            number = int(input("Enter product number: "))
+            if number < 1 or number > len(products):
+                raise ValueError("Product number out of range.")
+            print()
 
-        product = products[number-1]
-        show_product(product)
+            product = products[number-1]
+            show_product(product)
 
-        choice = input("View another product? (y/n): ")
+        except ValueError as ve:
+            print(f"Invalid input: {ve}. Please enter a valid product number.")
+            continue
+
+        while True:
+            choice = input("View another product? (y/n): ").strip().lower()
+            if choice in ('y', 'n'):
+                break
+            else:
+                print("Invalid input. Please enter 'y' for yes or 'n' for no.")
         print()
 
     print("Bye!")

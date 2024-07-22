@@ -51,7 +51,7 @@ class Movie(Media):
     year: an integer representing the movie's release year.
     movieFormat: an string representing the format of the movie
     """
-    year:int = 0    
+    year:int = 0   
    
    
     def getDescription(self):
